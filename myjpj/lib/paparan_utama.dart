@@ -42,59 +42,72 @@ class PaparanUtama extends StatelessWidget {
               bottomRight: Radius.circular(18),
             ),
             child: Container(
-              padding: EdgeInsets.all(16),
-              color: Color(0xFF2B32B2),
-            ),
-          ),
-
-          // Dynamic ListView for Sections
-          Expanded(
-            child: ListView(
-              
-              padding: EdgeInsets.all(16),
-              children: [ 
-                Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              color: Color(0xFF2B32B2), // Blue background
+              padding: EdgeInsets.all(16), 
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(
                     radius: 50,
                     backgroundImage: AssetImage('assets/picture1.png'),
                   ),
-                  SizedBox(width: 18),
+                  SizedBox(width: 18), // Space between image and text
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'SYAFIQA ANEESA BINTI JOHARI',
-                          style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                         ),
                         Text(
                           'Orang Awam Malaysia',
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
                           'syafigajohari@gmail.com',
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
                           'STANDARD',
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
-                  ),
-                ],
+                  ),                     
+                ],                   
               ),
-                _buildSection('Pelesenan Kenderaan', UtamaModel.getPelesenanKenderaan(), context),
-                _buildSection('Pelesenan Pemandu', UtamaModel.getPelesenanPemandu(), context),
-                _buildSection('Penguatkuasaan', UtamaModel.getPenguatkuasaan(), context),
-                _buildSection('Perhkidmatan Umum', UtamaModel.getPerkhidmatanUmum(), context), 
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.zero, 
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: _buildSection('Pelesenan Kenderaan', UtamaModel.getPelesenanKenderaan(), context),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: _buildSection('Pelesenan Pemandu', UtamaModel.getPelesenanPemandu(), context),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: _buildSection('Penguatkuasaan', UtamaModel.getPenguatkuasaan(), context),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: _buildSection('Perkhidmatan Umum', UtamaModel.getPerkhidmatanUmum(), context),
+                ),
               ],
             ),
           ),
@@ -155,54 +168,52 @@ class PaparanUtama extends StatelessWidget {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   return _buildItem(items[index], context);
-                },
-              );
-            },
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget _buildItem(UtamaModel item, BuildContext context) {
-  return GestureDetector(
-    onTap: () => Navigator.pushNamed(context, item.route),
-    
-    child: Container(
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 4,
-            spreadRadius: 2,
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          CircleAvatar(
-            backgroundColor: Colors.transparent,
-            backgroundImage: AssetImage(item.iconPath),
-            radius: 20, // Adjusted icon size
-          ),
-          SizedBox(width: 10),
-          Expanded(
-            child: Text(
-              item.name,
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-              maxLines: 4, // Prevents excessive height
-              overflow: TextOverflow.ellipsis,
+                  },
+                );
+              },
             ),
           ),
         ],
       ),
-    ),
-  );
-}
+    );
+  }
 
-
+  Widget _buildItem(UtamaModel item, BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, item.route),
+      
+      child: Container(
+        padding: EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 4,
+              spreadRadius: 2,
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: Colors.transparent,
+              backgroundImage: AssetImage(item.iconPath),
+              radius: 20, // Adjusted icon size
+            ),
+            SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                item.name,
+                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                maxLines: 4, // Prevents excessive height
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
