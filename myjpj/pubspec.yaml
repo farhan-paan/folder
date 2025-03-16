@@ -1,0 +1,44 @@
+name: myjpj
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/picture1.png
+    - assets/pic1.jpg
+    - assets/pic3.jpg
+    - assets/pic4.jpg
+    - assets/pic5.jpg
+    - assets/pic6.jpg
+    - assets/pic7.jpg
+    - assets/pic8.jpg
+    - assets/pic9.jpg
+    - assets/pic10.jpg
+    - assets/pic11.jpg
+    - assets/pic12.jpg
+    - assets/pic13.jpg
+    - assets/pic14.jpg
+    - assets/pic15.jpg
+    - assets/pic16.jpg
+    - assets/jatanegara.png
+    - assets/jpjlogo.png
